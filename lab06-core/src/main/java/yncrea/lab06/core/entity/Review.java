@@ -2,11 +2,19 @@ package yncrea.lab06.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Date;
 
-// TODO complete this implementation with the correct annotations, fields and methods.
+@Entity
 public class Review implements Comparable<Review> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     private int score;
 
@@ -20,5 +28,45 @@ public class Review implements Comparable<Review> {
     @Override
     public int compareTo(final Review o) {
         return dateOfReview.compareTo(o.dateOfReview);
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+
+    public void setId(final long idValue) {
+        id = idValue;
+    }
+
+
+    public int getScore() {
+        return score;
+    }
+
+
+    public void setScore(final int scoreValue) {
+        score = scoreValue;
+    }
+
+
+    public Date getDateOfReview() {
+        return dateOfReview;
+    }
+
+
+    public void setDateOfReview(final Date dateOfReviewValue) {
+        dateOfReview = dateOfReviewValue;
+    }
+
+
+    public Book getBook() {
+        return book;
+    }
+
+
+    public void setBook(final Book bookValue) {
+        book = bookValue;
     }
 }
